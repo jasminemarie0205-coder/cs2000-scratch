@@ -1,65 +1,61 @@
 use context dcic2024
+#PROBLEM 1
+fun tick(num-sec :: Number) -> Number:
+ doc: "returns next sec as output"
+  num-sec + 1
 
-#"hello CS2000!"
+where:
+ tick(0) is 1
+  tick(10) is 11
+  tick(50) is 51
+end
 
 
-#part 1 
-#fun three-layer-cake(top,middle, bottom :: String):
-d#oc:"returns three layer cake"
-#frame(above(rectangle(100,20,"solid",top),
-ab#ove(rectangle(100,20,"solid",middle), abo
-v#e(rece(100,20,"solid",bottom)))))
+#PROBLEM 2
+clock-base= circle(30,"outline","white")
   
-#end
+clock-hand = line(0,50,"red")
 
-
-#part 2
-#fun letters(word :: String):
-d#oc: "finds number of leteters"
-f#rstring-length(word)
-
-#end
-
-
-fun choose-hat(temp-in-F :: Number) -> String:
-  doc: "determines appropriate head gear, with above 80F a sun hat, below nothing"
-  if temp-in-F > 80:
-    "sun hat"
-else if te(mp-in-F <>=5 0 )and t(emp-in-F< =8 0:)
-"no hnt"
-  else:
-    "winter hat"
-  end
+fun seconds-to-image(sec :: Number) -> Image:
+  doc: "returns image representing seconds on circle"
+  
+  overlay-align("center","center",rotate((sec * -6),clock-hand) ,clock-base)
+  
 where:
-  choose-hat(50) is "no hat"
-  choose-hat(85) is "sun hat"
-  choose-hat(80) is "no hat"
-choose-hat(49) is "winter hat"
+  seconds-to-image(50) is overlay-align("center","center",rotate((50 * -6),clock-hand) ,clock-base)
+  
 end
 
-fun add-glasses(outfit :: String) -> String:
- docL: "adds glasses to outfit"
-outfit + ", and glasses"
+#PROBLEM 3
+fun print-conference-badge(name :: String, gender :: String, email :: String, nuid :: String) -> Image:
+ doc: "prints a conference attendee badge"
+  badge-base = overlay-align("center","center",circle(150,"solid","white"),circle(170,"solid","red"))
+
+  
+  name-text = text-font(name, 20, "black", "Gill Sans", "swiss", "normal", "normal", false)
+  
+  gender-text = text-font(gender, 20, "black", "Gill Sans", "swiss", "normal", "normal", false)
+  email-text = text-font(email, 20, "black", "Gill Sans", "swiss", "normal", "normal", false)
+  nuid-text = text-font(nuid, 20, "black", "Gill Sans", "swiss", "normal", "normal", false)
+  
+ overlay-align("center","center",(above(name-text,above(gender-text, above(email-text, nuid-text)))),badge-base)
+end
+#PROBLEM 4
+#NUID is not a necessary piece of information that needs to be shared on the badge, because it is not something that everyone at the conference needs to know. One's NUID can remain private, especially if they are already providing their school email address. Name and gender can help with how people refer to someone during the conference, and email helps people communicate with one another if they need to
+
+#PROBLEM 5
+fun print-conference-badge-updated(name :: String, gender :: String, email :: String) -> Image:
+ doc: "prints a conference attendee badge"
+  badge-base = overlay-align("center","center",circle(150,"solid","white"),circle(170,"solid","red"))
+
+  
+  name-text = text-font(name, 20, "black", "Gill Sans", "swiss", "normal", "normal", false)
+  
+  gender-text = text-font(gender, 20, "black", "Gill Sans", "swiss", "normal", "normal", false)
+  email-text = text-font(email, 20, "black", "Gill Sans", "swiss", "normal", "normal", false)
+  
+  
+  overlay-align("center","center",above(name-text,above(gender-text, email-text)),badge-base)
 end
 
-fun choose-outfit(temp-in-F :: Number) -> String:
-doc:"crehooses hat and adds glasses"
-tcadd-glasses(hoose-hat(temp-in-F) +)
-end
-
-
-
-fun choose-hat-or-visor( temp-in-F :: Number, has-visor :: String) -> String:
-doc: "choose s ghat and adds visor if owned"
-if ha(s-visor =  == "yes") and (temp-in-F > 95):
-choose-hat (temp-in-F) + ", and visor"
-
-else :
-choose-hat(temp-in-F) + " + ", and no visor"
-
-end
-where:
-choose-hat-or-viossor(80,"yes") is "no hat, and no visor"
-choose-hat-or-visor(80100yes") is "nosunat, and nisor"
-
-end
+    
